@@ -1,0 +1,120 @@
+.font-text-shadow {
+  text-shadow: 2.5px 2.5px #5c4f37;
+}
+* {
+  font-family: 'Changa One', sans-serif;
+}
+body {
+  background: #84714F;
+}
+div {
+  box-sizing: border-box;
+}
+.container {
+  margin-top: 50px;
+}
+#question {
+  display: none;
+  color: #FFF;
+  font-size: 25px;
+  text-align: center;
+  text-shadow: 2.5px 2.5px #5c4f37;
+}
+#question p {
+  font-size: 40px;
+}
+#question button {
+  width: 25%;
+  background: 0;
+  border: 0 solid #FFF;
+  border-radius: 20px;
+  outline: none;
+}
+#question button i {
+  font-size: 50px;
+  text-shadow: 2.5px 2.5px #5c4f37;
+}
+#question button i:hover {
+  color: pink;
+  text-shadow: 2.5px 2.5px #FFF;
+}
+#scoreboard {
+  display: none;
+  justify-content: space-inbetween;
+  align-items: center;
+  font-weight: bold;
+  color: #FFF;
+  font-size: 150%;
+  text-shadow: 2.5px 2.5px #5c4f37;
+  height: 50px;
+  text-transform: uppercase;
+}
+#scoreboard div {
+  flex: 1;
+}
+#scoreboard #computerScoreboard {
+  text-align: right;
+}
+#scoreboard #resultMessage {
+  text-align: center;
+  font-size: 200%;
+  white-space: nowrap;
+}
+#game {
+  width: 100%;
+  background: #666;
+  display: none;
+  flex-wrap: wrap;
+  box-shadow: 5px 5px 2.5px #4c412e;
+}
+.square {
+  flex-basis: 33.3333%;
+  overflow: hidden;
+  position: relative;
+  background: #5c4f37;
+  border: 2.5px solid #FFF;
+  text-align: center;
+}
+.square:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+.table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: table;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 2.5px 2.5px pink;
+}
+#square-0,
+#square-3,
+#square-6 {
+  border-left: 0px solid transparent;
+}
+#square-0,
+#square-1,
+#square-2 {
+  border-top: 0px solid transparent;
+}
+#square-2,
+#square-5,
+#square-8 {
+  border-right: 0px solid transparent;
+}
+#square-6,
+#square-7,
+#square-8 {
+  border-bottom: 0px solid transparent;
+}

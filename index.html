@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Changa+One" rel="stylesheet">
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <!--
+grid layout: https://jsfiddle.net/patrickberkeley/noLm1r45/3/
+fa-circle-o
+fa-times
+-->
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+
+    <!-- ===== QUESTION ===== -->
+
+    <div id="question">
+      <p>CHOOSE YOUR SIDE!</p>
+      <button id="question-o"><i class="fa fa-circle-o"></i></button>
+      <button id="question-x"><i class="fa fa-times"></i></button>
+    </div>
+    
+    <!-- ===== SCOREBOARD ===== -->
+    
+    <div id="scoreboard">
+      <div id="playerScoreboard">Player: 0</div>
+      <div id="resultMessage"></div>
+      <div id="computerScoreboard">Computer: 0</div>
+      
+    </div>
+    
+    <!-- ===== GAME ===== -->
+
+    <div id="game">
+
+      <div id="square-0" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+      <div id="square-1" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+      <div id="square-2" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+
+      <div id="square-3" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+      <div id="square-4" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+      <div id="square-5" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+
+      <div id="square-6" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+      <div id="square-7" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+      <div id="square-8" class="square">
+        <div class="table">
+          <div class="table-cell"><i class="fa"></i></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
