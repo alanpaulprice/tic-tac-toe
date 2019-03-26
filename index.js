@@ -1,13 +1,7 @@
-/*
-https://medium.freecodecamp.org/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37
-*/
-
-console.clear();
-$(document).ready (() => {
-
-  let human = "";
-  let computer = "";
-  let mainBoard = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+$(document).ready(() => {
+  let human = '';
+  let computer = '';
+  let mainBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
   let humanScore = 0;
   let computerScore = 0;
   let humanFirstTurn = true;
@@ -15,27 +9,29 @@ $(document).ready (() => {
 
   // ===== QUESTION =====
 
-  function question (choice) {
-    if (choice === "x") {
-      human = "x";
-      computer = "o";
+  function question(choice) {
+    if (choice === 'x') {
+      human = 'x';
+      computer = 'o';
     } else {
-      human = "o";
-      computer = "x";
+      human = 'o';
+      computer = 'x';
     }
 
-    $("#question").slideToggle(500);//.css("display", "none");
-    $("#game, #scoreboard").fadeIn(2000).css("display", "flex");
+    $('#question').slideToggle(500); //.css("display", "none");
+    $('#game, #scoreboard')
+      .fadeIn(2000)
+      .css('display', 'flex');
   }
 
-  $("#question-o").click(() => question("o"));
-  $("#question-x").click(() => question("x"));
+  $('#question-o').click(() => question('o'));
+  $('#question-x').click(() => question('x'));
 
   // ===== GAME RESET =====
 
-  function gameReset () {
-    mainBoard = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-    $(".square i").attr("class", "fa");
+  function gameReset() {
+    mainBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+    $('.square i').attr('class', 'fa');
     humanFirstTurn = !humanFirstTurn;
 
     if (!humanFirstTurn) {
@@ -47,14 +43,13 @@ $(document).ready (() => {
 
   // ===== EMPTY SQUARES =====
 
-  function emptySquares (board) {
-
-    return board.filter((sq) => sq !== "x" && sq !== "o");
+  function emptySquares(board) {
+    return board.filter(sq => sq !== 'x' && sq !== 'o');
   }
 
   // ===== WINNING COMBO FOUND =====
 
-  function winningComboFound (board, player) {
+  function winningComboFound(board, player) {
     if (
       (board[0] == player && board[1] == player && board[2] == player) ||
       (board[3] == player && board[4] == player && board[5] == player) ||
@@ -73,27 +68,43 @@ $(document).ready (() => {
 
   // ===== CHECK FOR WIN =====
 
-  function checkForWin (symbol, who) {
+  function checkForWin(symbol, who) {
     if (winningComboFound(mainBoard, symbol)) {
-      if (who === "human") {
+      if (who === 'human') {
         humanScore++;
-        $("#playerScoreboard").html("Player: " + humanScore);
-        $("#resultMessage").text("YOU WON!").stop(false, true).fadeIn(0).fadeOut(4000);
-      } else if (who === "computer") {
+        $('#playerScoreboard').html('Player: ' + humanScore);
+        $('#resultMessage')
+          .text('YOU WON!')
+          .stop(false, true)
+          .fadeIn(0)
+          .fadeOut(4000);
+      } else if (who === 'computer') {
         computerScore++;
-        $("#computerScoreboard").html("Computer: " + computerScore);
-        $("#resultMessage").text("YOU LOST!").stop(false, true).fadeIn(0).fadeOut(4000);
+        $('#computerScoreboard').html('Computer: ' + computerScore);
+        $('#resultMessage')
+          .text('YOU LOST!')
+          .stop(false, true)
+          .fadeIn(0)
+          .fadeOut(4000);
       }
 
       humanTurnReady = false;
-      setTimeout(() => { gameReset(); }, 2000);
+      setTimeout(() => {
+        gameReset();
+      }, 2000);
       return true;
     }
 
     if (emptySquares(mainBoard).length === 0) {
-      $("#resultMessage").text("IT'S A DRAW!").stop(false, true).fadeIn(0).fadeOut(4000);
+      $('#resultMessage')
+        .text("IT'S A DRAW!")
+        .stop(false, true)
+        .fadeIn(0)
+        .fadeOut(4000);
       humanTurnReady = false;
-      setTimeout(() => { gameReset(); }, 2000);
+      setTimeout(() => {
+        gameReset();
+      }, 2000);
       return true;
     }
     return false;
@@ -101,8 +112,7 @@ $(document).ready (() => {
 
   // ===== MINIMAX =====
 
-  function minimax (newBoard, player, depth) {
-
+  function minimax(newBoard, player, depth) {
     let availSpots = emptySquares(newBoard);
 
     // Ends recursion and returns score if game has reached conclusion
@@ -113,7 +123,7 @@ $(document).ready (() => {
     } else if (availSpots.length === 0) {
       return { score: 0 };
     }
-    
+
     // Collects scores
     let moves = [];
 
@@ -168,30 +178,33 @@ $(document).ready (() => {
 
   // ===== COMPUTER TURN =====
 
-  function computerTurn () {
-
+  function computerTurn() {
     let bestSpot = minimax(mainBoard, computer).index;
 
     setTimeout(() => {
       mainBoard[bestSpot] = computer;
 
-      if (computer === "o") {
-        $("#square-" + bestSpot + " i").addClass("fa-circle-o").fadeOut(0).fadeIn(500);;
+      if (computer === 'o') {
+        $('#square-' + bestSpot + ' i')
+          .addClass('fa-circle-o')
+          .fadeOut(0)
+          .fadeIn(500);
       } else {
-        $("#square-" + bestSpot + " i").addClass("fa-times").fadeOut(0).fadeIn(500);;
+        $('#square-' + bestSpot + ' i')
+          .addClass('fa-times')
+          .fadeOut(0)
+          .fadeIn(500);
       }
 
-      if (!checkForWin(computer, "computer")) {
+      if (!checkForWin(computer, 'computer')) {
         humanTurnReady = true;
       }
     }, 1000);
-
   } /* computer turn */
 
   // ===== HUMAN TURN =====
 
-  function humanTurn (square) {
-
+  function humanTurn(square) {
     if (mainBoard[square] !== square.toString() || !humanTurnReady) {
       return;
     }
@@ -200,26 +213,32 @@ $(document).ready (() => {
 
     humanTurnReady = false;
 
-    if (human === "o") {
-      $("#square-" + square + " i").addClass("fa-circle-o").fadeOut(0).fadeIn(500);
+    if (human === 'o') {
+      $('#square-' + square + ' i')
+        .addClass('fa-circle-o')
+        .fadeOut(0)
+        .fadeIn(500);
     } else {
-      $("#square-" + square + " i").addClass("fa-times").fadeOut(0).fadeIn(500);
+      $('#square-' + square + ' i')
+        .addClass('fa-times')
+        .fadeOut(0)
+        .fadeIn(500);
     }
 
-    if (!checkForWin(human, "human")) {
+    if (!checkForWin(human, 'human')) {
       computerTurn();
     }
   }
 
-  $("#square-0").click(() => humanTurn(0));
-  $("#square-1").click(() => humanTurn(1));
-  $("#square-2").click(() => humanTurn(2));
-  $("#square-3").click(() => humanTurn(3));
-  $("#square-4").click(() => humanTurn(4));
-  $("#square-5").click(() => humanTurn(5));
-  $("#square-6").click(() => humanTurn(6));
-  $("#square-7").click(() => humanTurn(7));
-  $("#square-8").click(() => humanTurn(8));
+  $('#square-0').click(() => humanTurn(0));
+  $('#square-1').click(() => humanTurn(1));
+  $('#square-2').click(() => humanTurn(2));
+  $('#square-3').click(() => humanTurn(3));
+  $('#square-4').click(() => humanTurn(4));
+  $('#square-5').click(() => humanTurn(5));
+  $('#square-6').click(() => humanTurn(6));
+  $('#square-7').click(() => humanTurn(7));
+  $('#square-8').click(() => humanTurn(8));
 
-  $("#question").fadeIn(2000);
+  $('#question').fadeIn(2000);
 }); /* doc rdy */
