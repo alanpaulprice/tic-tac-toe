@@ -28,7 +28,7 @@ $('#question-x').click(() => question('x'));
 
 // ===== GAME RESET =====
 
-function gameReset() {
+function resetGame() {
   mainBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
   $('.square i').attr('class', 'fa');
   humanFirstTurn = !humanFirstTurn;
@@ -85,7 +85,7 @@ function checkForWin(symbol, who) {
 
     humanTurnReady = false;
     setTimeout(() => {
-      gameReset();
+      resetGame();
     }, 2000);
     return true;
   }
@@ -98,7 +98,7 @@ function checkForWin(symbol, who) {
       .fadeOut(4000);
     humanTurnReady = false;
     setTimeout(() => {
-      gameReset();
+      resetGame();
     }, 2000);
     return true;
   }
