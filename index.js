@@ -49,7 +49,7 @@ function emptySquares(board) {
 // ===== WINNING COMBO FOUND =====
 
 function winningComboFound(board, player) {
-  if (
+  return (
     (board[0] == player && board[1] == player && board[2] == player) ||
     (board[3] == player && board[4] == player && board[5] == player) ||
     (board[6] == player && board[7] == player && board[8] == player) ||
@@ -58,11 +58,7 @@ function winningComboFound(board, player) {
     (board[2] == player && board[5] == player && board[8] == player) ||
     (board[0] == player && board[4] == player && board[8] == player) ||
     (board[2] == player && board[4] == player && board[6] == player)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  );
 }
 
 // ===== CHECK FOR WIN =====
