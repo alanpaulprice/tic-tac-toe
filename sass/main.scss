@@ -1,0 +1,148 @@
+$color-1: #84714f;
+$color-white: #fff;
+$color-3: darken($color-1, 12.5%);
+$color-4: pink;
+
+@mixin font-text-shadow {
+  text-shadow: 2.5px 2.5px $color-3;
+}
+
+* {
+  font-family: 'Changa One', sans-serif;
+}
+
+body {
+  background: $color-1;
+}
+
+div {
+  box-sizing: border-box;
+  //overflow: hidden;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+// ===== QUESTION =====
+
+#question {
+  display: none;
+  color: $color-white;
+  font-size: 25px;
+  text-align: center;
+  @include font-text-shadow;
+  p {
+    font-size: 40px;
+  }
+  button {
+    width: 25%;
+    background: 0;
+    border: 0 solid $color-white;
+    border-radius: 20px;
+    outline: none;
+    i {
+      font-size: 50px;
+      @include font-text-shadow;
+      &:hover {
+        color: $color-4;
+        text-shadow: 2.5px 2.5px $color-white;
+      }
+    }
+  }
+}
+
+// ===== SCOREBOARD =====
+
+#scoreboard {
+  display: none; //flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: $color-white;
+  font-size: 150%;
+  @include font-text-shadow;
+  height: 50px;
+  text-transform: uppercase;
+  div {
+    flex: 1;
+  }
+  #computerScoreboard {
+    text-align: right;
+  }
+  #resultMessage {
+    text-align: center;
+    font-size: 200%;
+    white-space: nowrap;
+  }
+}
+
+// ===== GRID LAYOUT =====
+
+#game {
+  width: 100%;
+  display: none; //flex;
+  flex-wrap: wrap;
+  box-shadow: 5px 5px 2.5px darken($color-3, 5%);
+}
+
+.square {
+  flex-basis: 33.3333%;
+  overflow: hidden;
+  position: relative;
+  background: $color-3;
+  border: 2.5px solid $color-white;
+  text-align: center;
+}
+
+.square::after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+.table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: table;
+  width: 100%;
+  height: 100%;
+  color: $color-white;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 2.5px 2.5px $color-4;
+}
+
+// ===== REMOVES OUTER BORDERS =====
+
+#square-0,
+#square-3,
+#square-6 {
+  border-left: 0px solid transparent;
+}
+
+#square-0,
+#square-1,
+#square-2 {
+  border-top: 0px solid transparent;
+}
+
+#square-2,
+#square-5,
+#square-8 {
+  border-right: 0px solid transparent;
+}
+
+#square-6,
+#square-7,
+#square-8 {
+  border-bottom: 0px solid transparent;
+}
