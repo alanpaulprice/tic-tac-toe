@@ -44,6 +44,7 @@ div {
     i {
       font-size: 50px;
       @include font-text-shadow;
+      transition: 0.2s all;
       &:hover {
         color: $color-4;
         text-shadow: 2.5px 2.5px $color-white;
