@@ -1,0 +1,19 @@
+@mixin font-text-shadow {
+  text-shadow: 2.5px 2.5px $color-primary-30;
+}
+
+@mixin font-size-sm {
+  font-size: 3rem;
+}
+
+@mixin font-size-md {
+  font-size: 4rem;
+}
+
+@mixin font-size-lg {
+  font-size: 6rem;
+}
+
+@mixin font-size-xl {
+  font-size: 8rem;
+}

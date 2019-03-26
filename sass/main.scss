@@ -1,27 +1,40 @@
-$color-primary: #84714f;
-$color-white: #fff;
-$color-3: darken($color-primary, 12.5%);
-$color-4: pink;
+@import 'variables';
+@import 'mixins';
 
-@mixin font-text-shadow {
-  text-shadow: 2.5px 2.5px $color-3;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-* {
-  font-family: 'Changa One', sans-serif;
+html {
+  font-size: 62.5%;
+  background: $color-primary;
 }
 
 body {
-  background: $color-primary;
+  font-family: 'Germania One', cursive;
+  box-sizing: border-box;
 }
 
 div {
   box-sizing: border-box;
-  //overflow: hidden;
 }
 
 .container {
-  margin-top: 50px;
+  margin: 5rem auto;
+  min-width: 320px;
+  max-width: 640px;
+}
+
+.fa.fa-times {
+  color: $color-secondary;
+}
+
+.fa.fa-circle-o {
+  color: $color-tertiary;
 }
 
 // ===== QUESTION =====
@@ -29,27 +42,20 @@ div {
 #question {
   display: none;
   color: $color-white;
-  font-size: 25px;
   text-align: center;
-  @include font-text-shadow;
   p {
-    font-size: 40px;
+    @include font-size-md;
+    padding-bottom: 4rem;
   }
   button {
-    width: 25%;
+    padding: 1rem 2rem;
+    margin: 1rem;
     background: 0;
     border: 0 solid $color-white;
-    border-radius: 20px;
     outline: none;
-    i {
-      font-size: 50px;
-      @include font-text-shadow;
-      transition: 0.2s all;
-      &:hover {
-        color: $color-4;
-        text-shadow: 2.5px 2.5px $color-white;
-      }
-    }
+    @include font-size-xl;
+    color: $color-white;
+    transition: 0.2s all;
   }
 }
 
@@ -61,19 +67,19 @@ div {
   align-items: center;
   font-weight: bold;
   color: $color-white;
-  font-size: 150%;
-  @include font-text-shadow;
-  height: 50px;
+  @include font-size-sm;
+  height: 5rem;
   text-transform: uppercase;
   div {
-    flex: 1;
+    width: (100%/3);
+    border: 1px solid red;
   }
   #computerScoreboard {
     text-align: right;
   }
   #resultMessage {
     text-align: center;
-    font-size: 200%;
+    @include font-size-md;
     white-space: nowrap;
   }
 }
@@ -81,18 +87,16 @@ div {
 // ===== GRID LAYOUT =====
 
 #game {
-  width: 100%;
   display: none; //flex;
   flex-wrap: wrap;
-  box-shadow: 5px 5px 2.5px darken($color-3, 5%);
 }
 
 .square {
-  flex-basis: 33.3333%;
+  width: (100%/3);
   overflow: hidden;
   position: relative;
-  background: $color-3;
-  border: 2.5px solid $color-white;
+  background: $color-primary-30;
+  border: 0.25rem solid $color-white;
   text-align: center;
 }
 
@@ -117,9 +121,8 @@ div {
   vertical-align: middle;
   height: 100%;
   width: 100%;
-  font-size: 50px;
+  @include font-size-xl;
   font-weight: bold;
-  text-shadow: 2.5px 2.5px $color-4;
 }
 
 // ===== REMOVES OUTER BORDERS =====
