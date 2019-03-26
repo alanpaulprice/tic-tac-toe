@@ -1,6 +1,6 @@
-$color-1: #84714f;
+$color-primary: #84714f;
 $color-white: #fff;
-$color-3: darken($color-1, 12.5%);
+$color-3: darken($color-primary, 12.5%);
 $color-4: pink;
 
 @mixin font-text-shadow {
@@ -12,7 +12,7 @@ $color-4: pink;
 }
 
 body {
-  background: $color-1;
+  background: $color-primary;
 }
 
 div {
