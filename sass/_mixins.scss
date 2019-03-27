@@ -26,6 +26,10 @@
 
 // ========== MARGIN
 
+@mixin margin-b-sm {
+  margin-bottom: 2rem;
+}
+
 @mixin margin-b-md {
   margin-bottom: 4rem;
 }

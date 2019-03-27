@@ -67,7 +67,7 @@ function checkForWin(symbol, who) {
   if (winningComboFound(mainBoard, symbol)) {
     if (who === 'human') {
       humanScore++;
-      $('#scoreboard__player').html('Player: ' + humanScore);
+      $('#scoreboard__player').html('Player<br>' + humanScore);
       $('#result-message')
         .text('YOU WON!')
         .stop(false, true)
@@ -75,7 +75,7 @@ function checkForWin(symbol, who) {
         .fadeOut(4000);
     } else if (who === 'computer') {
       computerScore++;
-      $('#scoreboard__computer').html('Computer: ' + computerScore);
+      $('#scoreboard__computer').html('Computer<br>' + computerScore);
       $('#result-message')
         .text('YOU LOST!')
         .stop(false, true)

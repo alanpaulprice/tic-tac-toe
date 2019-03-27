@@ -53,7 +53,7 @@
 // ===== SCOREBOARD =====
 
 .scoreboard {
-  @include margin-b-md;
+  @include margin-b-sm;
   display: none; //flex;
   justify-content: space-between;
   align-items: center;
@@ -61,13 +61,16 @@
   color: $color-white;
   @include font-size-md;
   text-transform: uppercase;
-  div {
-    width: (100%/3);
+
+  &__player,
+  &__computer {
+    width: 50%;
   }
+
   &__computer {
     text-align: right;
   }
-  }
+}
 
 // ===== GAME =====
 
