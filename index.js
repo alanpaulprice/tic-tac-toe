@@ -30,7 +30,7 @@ $('#question-symbol-x').click(() => question('x'));
 
 function resetGame() {
   mainBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-  $('.square i').attr('class', 'fa');
+  $('.game__square i').attr('class', 'fa');
   humanFirstTurn = !humanFirstTurn;
 
   if (!humanFirstTurn) {
@@ -179,12 +179,12 @@ function computerTurn() {
     mainBoard[bestSpot] = computer;
 
     if (computer === 'o') {
-      $('#square-' + bestSpot + ' i')
+      $('#game__square-' + bestSpot + ' i')
         .addClass('fa-circle-o')
         .fadeOut(0)
         .fadeIn(500);
     } else {
-      $('#square-' + bestSpot + ' i')
+      $('#game__square-' + bestSpot + ' i')
         .addClass('fa-times')
         .fadeOut(0)
         .fadeIn(500);
@@ -208,12 +208,12 @@ function humanTurn(square) {
   humanTurnReady = false;
 
   if (human === 'o') {
-    $('#square-' + square + ' i')
+    $('#game__square-' + square + ' i')
       .addClass('fa-circle-o')
       .fadeOut(0)
       .fadeIn(500);
   } else {
-    $('#square-' + square + ' i')
+    $('#game__square-' + square + ' i')
       .addClass('fa-times')
       .fadeOut(0)
       .fadeIn(500);
@@ -224,14 +224,14 @@ function humanTurn(square) {
   }
 }
 
-$('#square-0').click(() => humanTurn(0));
-$('#square-1').click(() => humanTurn(1));
-$('#square-2').click(() => humanTurn(2));
-$('#square-3').click(() => humanTurn(3));
-$('#square-4').click(() => humanTurn(4));
-$('#square-5').click(() => humanTurn(5));
-$('#square-6').click(() => humanTurn(6));
-$('#square-7').click(() => humanTurn(7));
-$('#square-8').click(() => humanTurn(8));
+$('#game__square-0').click(() => humanTurn(0));
+$('#game__square-1').click(() => humanTurn(1));
+$('#game__square-2').click(() => humanTurn(2));
+$('#game__square-3').click(() => humanTurn(3));
+$('#game__square-4').click(() => humanTurn(4));
+$('#game__square-5').click(() => humanTurn(5));
+$('#game__square-6').click(() => humanTurn(6));
+$('#game__square-7').click(() => humanTurn(7));
+$('#game__square-8').click(() => humanTurn(8));
 
 $('#question').fadeIn(2000);

@@ -92,67 +92,65 @@ div {
 
 // ===== GRID LAYOUT =====
 
-#game {
+.game {
   display: none; //flex;
   flex-wrap: wrap;
-}
 
-.square {
-  width: (100%/3);
-  overflow: hidden;
-  position: relative;
-  background: $color-primary-30;
-  border: 0.25rem solid $color-white;
-  text-align: center;
-}
+  &__square {
+    width: (100%/3);
+    overflow: hidden;
+    position: relative;
+    background: $color-primary-30;
+    border: 0.25rem solid $color-white;
+    text-align: center;
 
-.square::after {
-  content: '';
-  display: block;
-  padding-bottom: 100%;
-}
+    &-0,
+    &-3,
+    &-6 {
+      border-left: 0px solid transparent;
+    }
 
-.table {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: table;
-  width: 100%;
-  height: 100%;
-  color: $color-white;
-}
+    &-0,
+    &-1,
+    &-2 {
+      border-top: 0px solid transparent;
+    }
 
-.table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-  @include font-size-xl;
-  font-weight: bold;
-}
+    &-2,
+    &-5,
+    &-8 {
+      border-right: 0px solid transparent;
+    }
 
-// ===== REMOVES OUTER BORDERS =====
+    &-6,
+    &-7,
+    &-8 {
+      border-bottom: 0px solid transparent;
+    }
 
-#square-0,
-#square-3,
-#square-6 {
-  border-left: 0px solid transparent;
-}
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
 
-#square-0,
-#square-1,
-#square-2 {
-  border-top: 0px solid transparent;
-}
+  &__table {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: table;
+    width: 100%;
+    height: 100%;
+    color: $color-white;
+  }
 
-#square-2,
-#square-5,
-#square-8 {
-  border-right: 0px solid transparent;
-}
-
-#square-6,
-#square-7,
-#square-8 {
-  border-bottom: 0px solid transparent;
+  &__table-cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    @include font-size-xl;
+    font-weight: bold;
+  }
 }
