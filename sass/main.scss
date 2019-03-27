@@ -53,13 +53,13 @@
 // ===== SCOREBOARD =====
 
 .scoreboard {
+  @include margin-b-md;
   display: none; //flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
   color: $color-white;
-  @include font-size-sm;
-  height: 5rem;
+  @include font-size-md;
   text-transform: uppercase;
   div {
     width: (100%/3);
