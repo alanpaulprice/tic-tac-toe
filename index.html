@@ -16,21 +16,32 @@
 
   <body>
     <div class="container">
-      <div class="col-md-6 col-md-offset-3">
+      <div>
         <!-- ===== QUESTION ===== -->
 
-        <div id="question">
-          <p>CHOOSE YOUR SIDE!</p>
-          <button id="question-o"><i class="fa fa-circle-o"></i></button>
-          <button id="question-x"><i class="fa fa-times"></i></button>
+        <div id="question-symbol" class="question-symbol">
+          <p>CHOOSE YOUR SYMBOL</p>
+          <button id="question-symbol-o" class="question-symbol__button">
+            <i class="fa fa-circle-o"></i>
+          </button>
+          <button id="question-symbol-x" class="question-symbol__button">
+            <i class="fa fa-times"></i>
+          </button>
         </div>
 
         <!-- ===== SCOREBOARD ===== -->
 
-        <div id="scoreboard">
-          <div id="playerScoreboard">Player: 0</div>
-          <div id="resultMessage"></div>
-          <div id="computerScoreboard">Computer: 0</div>
+        <div id="scoreboard" class="scoreboard">
+          <div id="scoreboard__player" class="scoreboard__player">
+            Player: 0
+          </div>
+          <div
+            id="scoreboard__result-message"
+            class="scoreboard__result-message"
+          ></div>
+          <div id="scoreboard__computer" class="scoreboard__computer">
+            Computer: 0
+          </div>
         </div>
 
         <!-- ===== GAME ===== -->

@@ -39,29 +39,36 @@ div {
 
 // ===== QUESTION =====
 
-#question {
-  display: none;
+.question-symbol {
   color: $color-white;
   text-align: center;
   p {
     @include font-size-md;
     padding-bottom: 4rem;
   }
-  button {
+  &__button {
     padding: 1rem 2rem;
     margin: 1rem;
-    background: 0;
-    border: 0 solid $color-white;
-    outline: none;
     @include font-size-xl;
-    color: $color-white;
+    background: 0;
+    border: none;
+    outline: none;
     transition: 0.2s all;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
   }
 }
 
 // ===== SCOREBOARD =====
 
-#scoreboard {
+.scoreboard {
   display: none; //flex;
   justify-content: space-between;
   align-items: center;
@@ -73,10 +80,10 @@ div {
   div {
     width: (100%/3);
   }
-  #computerScoreboard {
+  &__computer {
     text-align: right;
   }
-  #resultMessage {
+  &__result-message {
     text-align: center;
     @include font-size-md;
     white-space: nowrap;

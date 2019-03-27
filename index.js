@@ -17,14 +17,14 @@ function question(choice) {
     computer = 'x';
   }
 
-  $('#question').slideToggle(500);
+  $('#question-symbol').slideToggle(500);
   $('#game, #scoreboard')
     .fadeIn(2000)
     .css('display', 'flex');
 }
 
-$('#question-o').click(() => question('o'));
-$('#question-x').click(() => question('x'));
+$('#question-symbol-o').click(() => question('o'));
+$('#question-symbol-x').click(() => question('x'));
 
 // ===== GAME RESET =====
 
@@ -67,16 +67,16 @@ function checkForWin(symbol, who) {
   if (winningComboFound(mainBoard, symbol)) {
     if (who === 'human') {
       humanScore++;
-      $('#playerScoreboard').html('Player: ' + humanScore);
-      $('#resultMessage')
+      $('#scoreboard__player').html('Player: ' + humanScore);
+      $('#scoreboard__result-message')
         .text('YOU WON!')
         .stop(false, true)
         .fadeIn(0)
         .fadeOut(4000);
     } else if (who === 'computer') {
       computerScore++;
-      $('#computerScoreboard').html('Computer: ' + computerScore);
-      $('#resultMessage')
+      $('#scoreboard__computer').html('Computer: ' + computerScore);
+      $('#scoreboard__result-message')
         .text('YOU LOST!')
         .stop(false, true)
         .fadeIn(0)
@@ -91,7 +91,7 @@ function checkForWin(symbol, who) {
   }
 
   if (emptySquares(mainBoard).length === 0) {
-    $('#resultMessage')
+    $('#scoreboard__result-message')
       .text("IT'S A DRAW!")
       .stop(false, true)
       .fadeIn(0)
