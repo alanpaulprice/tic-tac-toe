@@ -15,5 +15,28 @@
 }
 
 @mixin font-size-xl {
-  font-size: 8rem;
+
+// ========== MEDIA QUERIES
+
+@mixin media($breakpoint) {
+  // 640
+  @if $breakpoint == md {
+    @media screen and (min-width: 40em) {
+      @content;
+    }
+  }
+
+  // 960
+  @if $breakpoint == lg {
+    @media screen and (min-width: 60em) {
+      @content;
+    }
+  }
+
+  // 1280
+  @if $breakpoint == xl {
+    @media screen and (min-width: 80em) {
+      @content;
+    }
+  }
 }

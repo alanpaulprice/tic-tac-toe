@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 50%;
+  background: $color-primary;
+
+  @include media(md) {
+    font-size: 56.25%;
+  }
+
+  @include media(lg) {
+    font-size: 62.5%;
+  }
+}
+
+body {
+  font-family: 'Germania One', cursive;
+  box-sizing: border-box;
+}

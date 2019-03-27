@@ -1,27 +1,6 @@
 @import 'variables';
 @import 'mixins';
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-html {
-  font-size: 62.5%;
-  background: $color-primary;
-}
-
-body {
-  font-family: 'Germania One', cursive;
-  box-sizing: border-box;
-}
-
-div {
-  box-sizing: border-box;
-}
+@import 'global';
 
 .container {
   margin: 5rem auto;
