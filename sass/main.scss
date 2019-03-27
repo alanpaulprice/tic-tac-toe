@@ -67,16 +67,12 @@
   &__computer {
     text-align: right;
   }
-  &__result-message {
-    text-align: center;
-    @include font-size-md;
-    white-space: nowrap;
   }
-}
 
-// ===== GRID LAYOUT =====
+// ===== GAME =====
 
 .game {
+  @include margin-b-md;
   display: none; //flex;
   flex-wrap: wrap;
 
@@ -137,4 +133,13 @@
     @include font-size-xxl;
     font-weight: bold;
   }
+}
+
+// ===== RESULT MESSAGE =====
+
+.result-message {
+  color: $color-white;
+  text-align: center;
+  @include font-size-lg;
+  white-space: nowrap;
 }

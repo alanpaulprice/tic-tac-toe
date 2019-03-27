@@ -18,86 +18,82 @@
 
   <body>
     <div class="container">
-      <div>
-        <!-- ===== QUESTION ===== -->
+      <!-- ===== QUESTION ===== -->
 
-        <div id="question-symbol" class="question-symbol">
-          <p class="question-symbol__text">CHOOSE YOUR SYMBOL</p>
-          <button id="question-symbol-o" class="question-symbol__button">
-            <i class="fa fa-circle-o"></i>
-          </button>
-          <button id="question-symbol-x" class="question-symbol__button">
-            <i class="fa fa-times"></i>
-          </button>
+      <div id="question-symbol" class="question-symbol">
+        <p class="question-symbol__text">CHOOSE YOUR SYMBOL</p>
+        <button id="question-symbol-o" class="question-symbol__button">
+          <i class="fa fa-circle-o"></i>
+        </button>
+        <button id="question-symbol-x" class="question-symbol__button">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+
+      <!-- ===== SCOREBOARD ===== -->
+
+      <div id="scoreboard" class="scoreboard">
+        <div id="scoreboard__player" class="scoreboard__player">
+          Player: 0
+        </div>
+        <div id="scoreboard__computer" class="scoreboard__computer">
+          Computer: 0
+        </div>
+      </div>
+
+      <!-- ===== GAME ===== -->
+
+      <div id="game" class="game">
+        <div id="game__square-0" class="game__square game__square-0">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
+          </div>
+        </div>
+        <div id="game__square-1" class="game__square game__square-1">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
+          </div>
+        </div>
+        <div id="game__square-2" class="game__square game__square-2">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
+          </div>
         </div>
 
-        <!-- ===== SCOREBOARD ===== -->
-
-        <div id="scoreboard" class="scoreboard">
-          <div id="scoreboard__player" class="scoreboard__player">
-            Player: 0
+        <div id="game__square-3" class="game__square game__square-3">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
           </div>
-          <div
-            id="scoreboard__result-message"
-            class="scoreboard__result-message"
-          ></div>
-          <div id="scoreboard__computer" class="scoreboard__computer">
-            Computer: 0
+        </div>
+        <div id="game__square-4" class="game__square game__square-4">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
+          </div>
+        </div>
+        <div id="game__square-5" class="game__square game__square-5">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
           </div>
         </div>
 
-        <!-- ===== GAME ===== -->
-
-        <div id="game" class="game">
-          <div id="game__square-0" class="game__square game__square-0">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
+        <div id="game__square-6" class="game__square game__square-6">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
           </div>
-          <div id="game__square-1" class="game__square game__square-1">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
+        </div>
+        <div id="game__square-7" class="game__square game__square-7">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
           </div>
-          <div id="game__square-2" class="game__square game__square-2">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
-          </div>
-
-          <div id="game__square-3" class="game__square game__square-3">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
-          </div>
-          <div id="game__square-4" class="game__square game__square-4">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
-          </div>
-          <div id="game__square-5" class="game__square game__square-5">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
-          </div>
-
-          <div id="game__square-6" class="game__square game__square-6">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
-          </div>
-          <div id="game__square-7" class="game__square game__square-7">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
-          </div>
-          <div id="game__square-8" class="game__square game__square-8">
-            <div class="game__table">
-              <div class="game__table-cell"><i class="fa"></i></div>
-            </div>
+        </div>
+        <div id="game__square-8" class="game__square game__square-8">
+          <div class="game__table">
+            <div class="game__table-cell"><i class="fa"></i></div>
           </div>
         </div>
       </div>
+
+      <div id="result-message" class="result-message"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

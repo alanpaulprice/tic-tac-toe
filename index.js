@@ -68,7 +68,7 @@ function checkForWin(symbol, who) {
     if (who === 'human') {
       humanScore++;
       $('#scoreboard__player').html('Player: ' + humanScore);
-      $('#scoreboard__result-message')
+      $('#result-message')
         .text('YOU WON!')
         .stop(false, true)
         .fadeIn(0)
@@ -76,7 +76,7 @@ function checkForWin(symbol, who) {
     } else if (who === 'computer') {
       computerScore++;
       $('#scoreboard__computer').html('Computer: ' + computerScore);
-      $('#scoreboard__result-message')
+      $('#result-message')
         .text('YOU LOST!')
         .stop(false, true)
         .fadeIn(0)
@@ -91,7 +91,7 @@ function checkForWin(symbol, who) {
   }
 
   if (emptySquares(mainBoard).length === 0) {
-    $('#scoreboard__result-message')
+    $('#result-message')
       .text("IT'S A DRAW!")
       .stop(false, true)
       .fadeIn(0)
