@@ -1,9 +1,7 @@
-@mixin font-text-shadow {
-  text-shadow: 2.5px 2.5px $color-primary-30;
-}
+// ========== FONT SIZE
 
 @mixin font-size-sm {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 @mixin font-size-md {
@@ -15,6 +13,22 @@
 }
 
 @mixin font-size-xl {
+  font-size: 8rem;
+}
+
+@mixin font-size-xxl {
+  font-size: 10rem;
+}
+
+@mixin font-size-xxxl {
+  font-size: 12rem;
+}
+
+// ========== MARGIN
+
+@mixin margin-b-md {
+  margin-bottom: 4rem;
+}
 
 // ========== MEDIA QUERIES
 
