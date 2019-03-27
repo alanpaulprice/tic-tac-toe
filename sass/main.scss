@@ -21,9 +21,10 @@
 .question-symbol {
   color: $color-white;
   text-align: center;
-  p {
-    @include font-size-md;
-    padding-bottom: 4rem;
+
+  &__text {
+    @include font-size-lg;
+    @include margin-b-md;
   }
   &__button {
     padding: 1rem 2rem;
