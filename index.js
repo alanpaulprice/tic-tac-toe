@@ -224,14 +224,8 @@ function humanTurn(square) {
   }
 }
 
-$('#game__square-0').click(() => humanTurn(0));
-$('#game__square-1').click(() => humanTurn(1));
-$('#game__square-2').click(() => humanTurn(2));
-$('#game__square-3').click(() => humanTurn(3));
-$('#game__square-4').click(() => humanTurn(4));
-$('#game__square-5').click(() => humanTurn(5));
-$('#game__square-6').click(() => humanTurn(6));
-$('#game__square-7').click(() => humanTurn(7));
-$('#game__square-8').click(() => humanTurn(8));
+// ===== GAME CLICK EVENTS =====
 
-$('#question').fadeIn(2000);
+document.querySelector('#game').addEventListener('click', e => {
+  if (e.target.dataset.value) humanTurn(e.target.dataset.value);
+});
