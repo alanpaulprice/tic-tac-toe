@@ -70,6 +70,16 @@
   &__computer {
     text-align: right;
   }
+
+  &__player-label,
+  &__computer-label {
+    @include font-size-md;
+}
+
+  &__player-value,
+  &__computer-value {
+    @include font-size-lg;
+  }
 }
 
 // ===== GAME =====
