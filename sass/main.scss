@@ -27,6 +27,7 @@
   text-align: center;
 
   &__text {
+    width: 100%;
     @include font-size-lg;
     @include margin-b-md;
   }
