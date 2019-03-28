@@ -74,7 +74,7 @@
   &__player-label,
   &__computer-label {
     @include font-size-md;
-}
+  }
 
   &__player-value,
   &__computer-value {
@@ -153,6 +153,5 @@
 .result-message {
   color: $color-white;
   text-align: center;
-  @include font-size-lg;
-  white-space: nowrap;
+  @include font-size-xl;
 }
