@@ -92,7 +92,6 @@
 
   &__square {
     width: (100%/3);
-    overflow: hidden;
     position: relative;
     background: $color-primary-30;
     border: 0.25rem solid $color-white;
@@ -101,25 +100,25 @@
     &-0,
     &-3,
     &-6 {
-      border-left: 0px solid transparent;
+      border-left-color: transparent;
     }
 
     &-0,
     &-1,
     &-2 {
-      border-top: 0px solid transparent;
+      border-top-color: transparent;
     }
 
     &-2,
     &-5,
     &-8 {
-      border-right: 0px solid transparent;
+      border-right-color: transparent;
     }
 
     &-6,
     &-7,
     &-8 {
-      border-bottom: 0px solid transparent;
+      border-bottom-color: transparent;
     }
 
     &::after {
