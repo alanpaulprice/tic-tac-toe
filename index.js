@@ -6,6 +6,12 @@ let computerScore = 0;
 let humanFirstTurn = true;
 let humanTurnReady = true;
 
+const DOM = {
+  questionSymbol: document.getElementById(`question-symbol`),
+  scoreboard: document.getElementById(`scoreboard`),
+  game: document.getElementById(`game`)
+};
+
 // ===== QUESTION =====
 
 function question(choice) {
@@ -17,10 +23,9 @@ function question(choice) {
     computer = `x`;
   }
 
-  $(`#question-symbol`).slideToggle(500);
-  $(`#game, #scoreboard`)
-    .fadeIn(2000)
-    .css(`display`, `flex`);
+  DOM.questionSymbol.classList.add(`question-symbol--hidden`);
+  DOM.game.classList.remove(`game--hidden`);
+  DOM.scoreboard.classList.remove(`scoreboard--hidden`);
 }
 
 $(`#question-symbol-o`).click(() => question(`o`));
