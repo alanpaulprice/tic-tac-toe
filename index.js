@@ -1,6 +1,6 @@
-let human = '';
-let computer = '';
-let mainBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+let human = ``;
+let computer = ``;
+let mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
 let humanScore = 0;
 let computerScore = 0;
 let humanFirstTurn = true;
@@ -9,28 +9,28 @@ let humanTurnReady = true;
 // ===== QUESTION =====
 
 function question(choice) {
-  if (choice === 'x') {
-    human = 'x';
-    computer = 'o';
+  if (choice === `x`) {
+    human = `x`;
+    computer = `o`;
   } else {
-    human = 'o';
-    computer = 'x';
+    human = `o`;
+    computer = `x`;
   }
 
-  $('#question-symbol').slideToggle(500);
-  $('#game, #scoreboard')
+  $(`#question-symbol`).slideToggle(500);
+  $(`#game, #scoreboard`)
     .fadeIn(2000)
-    .css('display', 'flex');
+    .css(`display`, `flex`);
 }
 
-$('#question-symbol-o').click(() => question('o'));
-$('#question-symbol-x').click(() => question('x'));
+$(`#question-symbol-o`).click(() => question(`o`));
+$(`#question-symbol-x`).click(() => question(`x`));
 
 // ===== GAME RESET =====
 
 function resetGame() {
-  mainBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-  $('.game__square i').attr('class', 'fa');
+  mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
+  $(`.game__square i`).attr(`class`, `fa`);
   humanFirstTurn = !humanFirstTurn;
 
   if (!humanFirstTurn) {
@@ -43,7 +43,7 @@ function resetGame() {
 // ===== EMPTY SQUARES =====
 
 function emptySquares(board) {
-  return board.filter(sq => sq !== 'x' && sq !== 'o');
+  return board.filter(sq => sq !== `x` && sq !== `o`);
 }
 
 // ===== WINNING COMBO FOUND =====
@@ -65,19 +65,19 @@ function winningComboFound(board, player) {
 
 function checkForWin(symbol, who) {
   if (winningComboFound(mainBoard, symbol)) {
-    if (who === 'human') {
+    if (who === `human`) {
       humanScore++;
-      $('#scoreboard__player-value').html(humanScore);
-      $('#result-message')
-        .text('PLAYER WINS!')
+      $(`#scoreboard__player-value`).html(humanScore);
+      $(`#result-message`)
+        .text(`PLAYER WINS!`)
         .stop(false, true)
         .fadeIn(0)
         .fadeOut(4000);
-    } else if (who === 'computer') {
+    } else if (who === `computer`) {
       computerScore++;
-      $('#scoreboard__computer-value').html(computerScore);
-      $('#result-message')
-        .text('COMPUTER WINS!')
+      $(`#scoreboard__computer-value`).html(computerScore);
+      $(`#result-message`)
+        .text(`COMPUTER WINS!`)
         .stop(false, true)
         .fadeIn(0)
         .fadeOut(4000);
@@ -91,8 +91,8 @@ function checkForWin(symbol, who) {
   }
 
   if (emptySquares(mainBoard).length === 0) {
-    $('#result-message')
-      .text("IT'S A DRAW!")
+    $(`#result-message`)
+      .text(`IT'S A DRAW!`)
       .stop(false, true)
       .fadeIn(0)
       .fadeOut(4000);
@@ -107,7 +107,7 @@ function checkForWin(symbol, who) {
 
 // ===== MINIMAX =====
 
-function minimax(newBoard, player, depth) {
+function minimax(newBoard, player) {
   let availSpots = emptySquares(newBoard);
 
   // Ends recursion and returns score if game has reached conclusion
@@ -178,19 +178,19 @@ function computerTurn() {
   setTimeout(() => {
     mainBoard[bestSpot] = computer;
 
-    if (computer === 'o') {
-      $('#game__square-' + bestSpot + ' i')
-        .addClass('fa-circle-o')
+    if (computer === `o`) {
+      $(`#game__square-${bestSpot} i`)
+        .addClass(`fa-circle-o`)
         .fadeOut(0)
         .fadeIn(500);
     } else {
-      $('#game__square-' + bestSpot + ' i')
-        .addClass('fa-times')
+      $(`#game__square-${bestSpot} i`)
+        .addClass(`fa-times`)
         .fadeOut(0)
         .fadeIn(500);
     }
 
-    if (!checkForWin(computer, 'computer')) {
+    if (!checkForWin(computer, `computer`)) {
       humanTurnReady = true;
     }
   }, 1000);
@@ -207,25 +207,25 @@ function humanTurn(square) {
 
   humanTurnReady = false;
 
-  if (human === 'o') {
-    $('#game__square-' + square + ' i')
-      .addClass('fa-circle-o')
+  if (human === `o`) {
+    $(`#game__square-${square} i`)
+      .addClass(`fa-circle-o`)
       .fadeOut(0)
       .fadeIn(500);
   } else {
-    $('#game__square-' + square + ' i')
-      .addClass('fa-times')
+    $(`#game__square-${square} i`)
+      .addClass(`fa-times`)
       .fadeOut(0)
       .fadeIn(500);
   }
 
-  if (!checkForWin(human, 'human')) {
+  if (!checkForWin(human, `human`)) {
     computerTurn();
   }
 }
 
 // ===== GAME CLICK EVENTS =====
 
-document.querySelector('#game').addEventListener('click', e => {
+document.getElementById(`game`).addEventListener(`click`, e => {
   if (e.target.dataset.value) humanTurn(e.target.dataset.value);
 });
