@@ -45,9 +45,10 @@
   }
 
   &__button {
-    padding: 1rem 2rem;
+    @include padding-h-sm;
+    @include margin-h-sm;
     @include font-size-xxl;
-    background: 0;
+    background: none;
     border: none;
     outline: none;
     transition: 0.2s all;
@@ -55,6 +56,9 @@
 
     &:hover {
       transform: scale(1.1);
+      i {
+        color: $color-white;
+      }
     }
 
     &:active {

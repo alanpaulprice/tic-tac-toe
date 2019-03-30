@@ -26,6 +26,11 @@
 
 // ========== MARGIN
 
+@mixin margin-h-sm {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 @mixin margin-b-sm {
   margin-bottom: 2rem;
 }
@@ -34,6 +39,12 @@
   margin-bottom: 4rem;
 }
 
+// ========== PADDING
+
+@mixin padding-h-sm {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 // ========== MEDIA QUERIES
 
 @mixin media($breakpoint) {
