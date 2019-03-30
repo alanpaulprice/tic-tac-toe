@@ -20,9 +20,15 @@
 // ===== QUESTION =====
 
 .question-symbol {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   color: $color-white;
   text-align: center;
   transition: all 0.5s ease-out;
