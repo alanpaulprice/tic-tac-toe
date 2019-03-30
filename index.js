@@ -11,7 +11,8 @@ const DOM = {
   questionSymbolButtonO: document.getElementById(`question-symbol__button--o`),
   questionSymbolButtonX: document.getElementById(`question-symbol__button--x`),
   scoreboard: document.getElementById(`scoreboard`),
-  game: document.getElementById(`game`)
+  game: document.getElementById(`game`),
+  squareIcons: document.querySelectorAll(`.game__square i`)
 };
 
 // ===== QUESTION =====
@@ -37,7 +38,7 @@ DOM.questionSymbolButtonX.addEventListener(`click`, () => questionSymbol(`x`));
 
 function resetGame() {
   mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
-  $(`.game__square i`).attr(`class`, `fa`);
+  DOM.squareIcons.forEach(i => (i.className = `fa`));
   humanFirstTurn = !humanFirstTurn;
 
   if (!humanFirstTurn) {
