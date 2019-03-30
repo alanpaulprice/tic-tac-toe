@@ -8,13 +8,15 @@ let humanTurnReady = true;
 
 const DOM = {
   questionSymbol: document.getElementById(`question-symbol`),
+  questionSymbolButtonO: document.getElementById(`question-symbol__button--o`),
+  questionSymbolButtonX: document.getElementById(`question-symbol__button--x`),
   scoreboard: document.getElementById(`scoreboard`),
   game: document.getElementById(`game`)
 };
 
 // ===== QUESTION =====
 
-function question(choice) {
+function questionSymbol(choice) {
   if (choice === `x`) {
     human = `x`;
     computer = `o`;
@@ -28,8 +30,8 @@ function question(choice) {
   DOM.scoreboard.classList.remove(`scoreboard--hidden`);
 }
 
-$(`#question-symbol-o`).click(() => question(`o`));
-$(`#question-symbol-x`).click(() => question(`x`));
+DOM.questionSymbolButtonO.addEventListener(`click`, () => questionSymbol(`o`));
+DOM.questionSymbolButtonX.addEventListener(`click`, () => questionSymbol(`x`));
 
 // ===== GAME RESET =====
 
