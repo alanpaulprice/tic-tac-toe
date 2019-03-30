@@ -8,7 +8,7 @@
 
 html {
   font-size: 50%;
-  background: $color-primary;
+  background: $color-primary-50;
 
   @include media(md) {
     font-size: 56.25%;
