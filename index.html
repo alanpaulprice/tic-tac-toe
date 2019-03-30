@@ -22,23 +22,26 @@
 
       <div id="question-symbol" class="question-symbol">
         <div>
-        <p class="question-symbol__text">CHOOSE YOUR SYMBOL</p>
-        <button id="question-symbol-o" class="question-symbol__button">
-          <i class="fa fa-circle-o"></i>
-        </button>
-        <button id="question-symbol-x" class="question-symbol__button">
-          <i class="fa fa-times"></i>
-        </button>
-      </div>
+          <p class="question-symbol__text">CHOOSE YOUR SYMBOL</p>
+          <button id="question-symbol-o" class="question-symbol__button">
+            <i class="fa fa-circle-o"></i>
+          </button>
+          <button id="question-symbol-x" class="question-symbol__button">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
       </div>
 
       <!-- ===== SCOREBOARD ===== -->
 
-      <div id="scoreboard" class="scoreboard">
+      <div id="scoreboard" class="scoreboard scoreboard--hidden">
         <div id="scoreboard__player" class="scoreboard__player">
-          <label for="scoreboard__player-value" class="scoreboard__player-label"
-            >Player</label
+          <label
+            for="scoreboard__player-value"
+            class="scoreboard__player-label"
           >
+            Player
+          </label>
           <p id="scoreboard__player-value" class="scoreboard__player-value">
             0
           </p>
@@ -47,8 +50,9 @@
           <label
             for="scoreboard__computer-value"
             class="scoreboard__computer-label"
-            >Computer</label
           >
+            Computer
+          </label>
           <p id="scoreboard__computer-value" class="scoreboard__computer-value">
             0
           </p>
@@ -57,7 +61,7 @@
 
       <!-- ===== GAME ===== -->
 
-      <div id="game" class="game">
+      <div id="game" class="game game--hidden">
         <div id="game__square-0" class="game__square game__square-0">
           <div class="game__table">
             <div class="game__table-cell" data-value="0">
