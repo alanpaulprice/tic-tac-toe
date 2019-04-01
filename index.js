@@ -31,9 +31,6 @@ function questionSymbol(choice) {
   DOM.scoreboard.classList.remove(`scoreboard--hidden`);
 }
 
-DOM.questionSymbolButtonO.addEventListener(`click`, () => questionSymbol(`o`));
-DOM.questionSymbolButtonX.addEventListener(`click`, () => questionSymbol(`x`));
-
 // ===== GAME RESET =====
 
 function resetGame() {
@@ -232,8 +229,10 @@ function humanTurn(square) {
   }
 }
 
-// ===== GAME CLICK EVENTS =====
+// ===== CLICK EVENTS =====
 
-document.getElementById(`game`).addEventListener(`click`, e => {
+DOM.questionSymbolButtonO.addEventListener(`click`, () => questionSymbol(`o`));
+DOM.questionSymbolButtonX.addEventListener(`click`, () => questionSymbol(`x`));
+DOM.game.addEventListener(`click`, e => {
   if (e.target.dataset.value) humanTurn(e.target.dataset.value);
 });
