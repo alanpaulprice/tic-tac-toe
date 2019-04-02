@@ -104,6 +104,7 @@
 // ===== GAME =====
 
 .game {
+  position: relative;
   @include margin-b-md;
   display: flex;
   flex-wrap: wrap;
@@ -174,7 +175,45 @@
 // ===== RESULT MESSAGE =====
 
 .result-message {
-  color: $color-white;
-  text-align: center;
-  @include font-size-xl;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &__box {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($color-black, 0.75);
+    animation: fadeInOutOpacity 4s forwards;
+  }
+
+  &__text {
+    @include font-size-xl;
+    text-align: center;
+    color: $color-white;
+  }
+}
+
+@keyframes fadeInOutOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

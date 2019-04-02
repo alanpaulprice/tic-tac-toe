@@ -11,8 +11,13 @@ const DOM = {
   questionSymbolButtonO: document.getElementById(`question-symbol__button--o`),
   questionSymbolButtonX: document.getElementById(`question-symbol__button--x`),
   scoreboard: document.getElementById(`scoreboard`),
+  scoreboardPlayerValue: document.getElementById(`scoreboard__player-value`),
+  scoreboardComputerValue: document.getElementById(
+    `scoreboard__computer-value`
+  ),
   game: document.getElementById(`game`),
-  squareIcons: document.querySelectorAll(`.game__square i`)
+  squareIcons: document.querySelectorAll(`.game__square i`),
+  resultMessage: document.getElementById(`result-message`)
 };
 
 // ===== QUESTION =====
@@ -72,20 +77,12 @@ function checkForWin(symbol, who) {
   if (winningComboFound(mainBoard, symbol)) {
     if (who === `human`) {
       humanScore++;
-      $(`#scoreboard__player-value`).html(humanScore);
-      $(`#result-message`)
-        .text(`PLAYER WINS!`)
-        .stop(false, true)
-        .fadeIn(0)
-        .fadeOut(4000);
+      DOM.scoreboardPlayerValue.innerHTML = humanScore;
+      displayResultMessage(`PLAYER WINS!`);
     } else if (who === `computer`) {
       computerScore++;
-      $(`#scoreboard__computer-value`).html(computerScore);
-      $(`#result-message`)
-        .text(`COMPUTER WINS!`)
-        .stop(false, true)
-        .fadeIn(0)
-        .fadeOut(4000);
+      DOM.scoreboardComputerValue.innerHTML = computerScore;
+      displayResultMessage(`COMPUTER WINS!`);
     }
 
     humanTurnReady = false;
@@ -96,11 +93,7 @@ function checkForWin(symbol, who) {
   }
 
   if (emptySquares(mainBoard).length === 0) {
-    $(`#result-message`)
-      .text(`IT'S A DRAW!`)
-      .stop(false, true)
-      .fadeIn(0)
-      .fadeOut(4000);
+    displayResultMessage(`IT'S A DRAW!`);
     humanTurnReady = false;
     setTimeout(() => {
       resetGame();
@@ -227,6 +220,17 @@ function humanTurn(square) {
   if (!checkForWin(human, `human`)) {
     computerTurn();
   }
+}
+
+// ===== DISPLAY RESULT MESSAGE =====
+
+function displayResultMessage(msg) {
+  DOM.resultMessage.innerHTML = ``;
+  DOM.resultMessage.innerHTML = `
+    <div class="result-message__box">
+      <span class="result-message__text">${msg}</span>
+    </div>
+  `;
 }
 
 // ===== CLICK EVENTS =====
