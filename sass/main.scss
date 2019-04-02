@@ -170,6 +170,15 @@
     @include font-size-xxl;
     font-weight: bold;
   }
+
+  &__icon {
+    opacity: 0;
+    transition: opacity 0.25s;
+
+    &--show {
+      opacity: 1;
+    }
+  }
 }
 
 // ===== RESULT MESSAGE =====

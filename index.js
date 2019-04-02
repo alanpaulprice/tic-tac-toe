@@ -40,7 +40,7 @@ function questionSymbol(choice) {
 
 function resetGame() {
   mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
-  DOM.squareIcons.forEach(i => (i.className = `fa`));
+  DOM.squareIcons.forEach(i => (i.className = `game__icon fa`));
   humanFirstTurn = !humanFirstTurn;
 
   if (!humanFirstTurn) {
@@ -171,55 +171,36 @@ function minimax(newBoard, player) {
 // ===== COMPUTER TURN =====
 
 function computerTurn() {
-  let bestSpot = minimax(mainBoard, computer).index;
+  const square = minimax(mainBoard, computer).index;
 
   setTimeout(() => {
-    mainBoard[bestSpot] = computer;
+    mainBoard[square] = computer;
 
     if (computer === `o`) {
-      $(`#game__square-${bestSpot} i`)
-        .addClass(`fa-circle-o`)
-        .fadeOut(0)
-        .fadeIn(500);
+      DOM.squareIcons[square].classList.add(`fa-circle-o`, `game__icon--show`);
     } else {
-      $(`#game__square-${bestSpot} i`)
-        .addClass(`fa-times`)
-        .fadeOut(0)
-        .fadeIn(500);
+      DOM.squareIcons[square].classList.add(`fa-times`, `game__icon--show`);
     }
 
-    if (!checkForWin(computer, `computer`)) {
-      humanTurnReady = true;
-    }
-  }, 1000);
+    if (!checkForWin(computer, `computer`)) humanTurnReady = true;
+  }, 750);
 }
 
 // ===== HUMAN TURN =====
 
 function humanTurn(square) {
-  if (mainBoard[square] !== square.toString() || !humanTurnReady) {
-    return;
-  }
+  if (mainBoard[square] !== square.toString() || !humanTurnReady) return;
 
   mainBoard[square] = human;
-
   humanTurnReady = false;
 
   if (human === `o`) {
-    $(`#game__square-${square} i`)
-      .addClass(`fa-circle-o`)
-      .fadeOut(0)
-      .fadeIn(500);
+    DOM.squareIcons[square].classList.add(`fa-circle-o`, `game__icon--show`);
   } else {
-    $(`#game__square-${square} i`)
-      .addClass(`fa-times`)
-      .fadeOut(0)
-      .fadeIn(500);
+    DOM.squareIcons[square].classList.add(`fa-times`, `game__icon--show`);
   }
 
-  if (!checkForWin(human, `human`)) {
-    computerTurn();
-  }
+  if (!checkForWin(human, `human`)) computerTurn();
 }
 
 // ===== DISPLAY RESULT MESSAGE =====
