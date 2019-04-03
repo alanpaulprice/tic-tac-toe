@@ -10,7 +10,7 @@
 
   @include media(md) {
     width: 75%;
-}
+  }
 }
 
 .fa.fa-times {
@@ -171,8 +171,16 @@
     vertical-align: middle;
     height: 100%;
     width: 100%;
-    @include font-size-xxl;
+    @include font-size-lg;
     font-weight: bold;
+
+    @include media(md) {
+      @include font-size-xl;
+    }
+
+    @include media(lg) {
+      @include font-size-xxl;
+    }
   }
 
   &__icon {
@@ -207,9 +215,17 @@
   }
 
   &__text {
-    @include font-size-xl;
+    @include font-size-md;
     text-align: center;
     color: $color-white;
+
+    @include media(md) {
+      @include font-size-lg;
+    }
+
+    @include media(lg) {
+      @include font-size-xl;
+    }
   }
 }
 
