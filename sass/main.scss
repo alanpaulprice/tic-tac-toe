@@ -124,6 +124,13 @@
     background: $color-primary-30;
     border: 0.25rem solid $color-white;
     text-align: center;
+    transition: all 0.5s;
+
+    &--empty {
+      &:hover {
+        background: $color-primary-40;
+      }
+    }
 
     &-0,
     &-3,

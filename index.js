@@ -16,7 +16,8 @@ const DOM = {
     `scoreboard__computer-value`
   ),
   game: document.getElementById(`game`),
-  squareIcons: document.querySelectorAll(`.game__square i`),
+  squares: document.querySelectorAll(`.game__square`),
+  squareIcons: document.querySelectorAll(`.game__icon`),
   resultMessage: document.getElementById(`result-message`)
 };
 
@@ -40,6 +41,10 @@ function questionSymbol(choice) {
 
 function resetGame() {
   mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
+  DOM.squares.forEach(
+    (el, ind) =>
+      (el.className = `game__square game__square--empty game__square-${ind}`)
+  );
   DOM.squareIcons.forEach(i => (i.className = `game__icon fa`));
   humanFirstTurn = !humanFirstTurn;
 
@@ -176,6 +181,7 @@ function computerTurn() {
   setTimeout(() => {
     mainBoard[square] = computer;
 
+    DOM.squares[square].classList.remove(`game__square--empty`);
     if (computer === `o`) {
       DOM.squareIcons[square].classList.add(`fa-circle-o`, `game__icon--show`);
     } else {
@@ -194,6 +200,7 @@ function humanTurn(square) {
   mainBoard[square] = human;
   humanTurnReady = false;
 
+  DOM.squares[square].classList.remove(`game__square--empty`);
   if (human === `o`) {
     DOM.squareIcons[square].classList.add(`fa-circle-o`, `game__icon--show`);
   } else {
