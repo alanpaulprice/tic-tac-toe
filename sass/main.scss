@@ -77,7 +77,6 @@
   align-items: center;
   font-weight: bold;
   color: $color-white;
-  @include font-size-md;
   text-transform: uppercase;
   transition: all 0.5s 1s ease-out;
 
@@ -96,7 +95,7 @@
 
   &__player-label,
   &__computer-label {
-    @include font-size-md;
+    @include font-size-sm;
   }
 
   &__player-value,
