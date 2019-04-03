@@ -1,43 +1,34 @@
-let human = ``;
-let computer = ``;
-let mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
-let humanScore = 0;
-let computerScore = 0;
-let humanFirstTurn = true;
-let humanTurnReady = true;
+let human = ``,
+  computer = ``,
+  mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`],
+  humanScore = 0,
+  computerScore = 0,
+  humanFirstTurn = true,
+  humanTurnReady = true;
 
 const DOM = {
   questionSymbol: document.getElementById(`question-symbol`),
   questionSymbolButtonO: document.getElementById(`question-symbol__button--o`),
   questionSymbolButtonX: document.getElementById(`question-symbol__button--x`),
   scoreboard: document.getElementById(`scoreboard`),
-  scoreboardPlayerValue: document.getElementById(`scoreboard__player-value`),
-  scoreboardComputerValue: document.getElementById(
-    `scoreboard__computer-value`
-  ),
+  computerScore: document.getElementById(`scoreboard__computer-value`),
   game: document.getElementById(`game`),
   squares: document.querySelectorAll(`.game__square`),
   squareIcons: document.querySelectorAll(`.game__icon`),
   resultMessage: document.getElementById(`result-message`)
 };
 
-// ===== QUESTION =====
+// ========== QUESTION
 
 function questionSymbol(choice) {
-  if (choice === `x`) {
-    human = `x`;
-    computer = `o`;
-  } else {
-    human = `o`;
-    computer = `x`;
-  }
-
+  human = choice;
+  computer = choice === `x` ? `o` : `x`;
   DOM.questionSymbol.classList.add(`question-symbol--hidden`);
-  DOM.game.classList.remove(`game--hidden`);
   DOM.scoreboard.classList.remove(`scoreboard--hidden`);
+  DOM.game.classList.remove(`game--hidden`);
 }
 
-// ===== GAME RESET =====
+// ========== GAME RESET
 
 function resetGame() {
   mainBoard = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
@@ -47,23 +38,18 @@ function resetGame() {
   );
   DOM.squareIcons.forEach(i => (i.className = `game__icon fa`));
   humanFirstTurn = !humanFirstTurn;
-
-  if (!humanFirstTurn) {
-    computerTurn();
-  } else {
-    humanTurnReady = true;
-  }
+  humanFirstTurn ? (humanTurnReady = true) : computerTurn();
 }
 
-// ===== EMPTY SQUARES =====
+// ========== EMPTY SQUARES
 
 function emptySquares(board) {
   return board.filter(sq => sq !== `x` && sq !== `o`);
 }
 
-// ===== WINNING COMBO FOUND =====
+// ========== WINNING COMBO FOUND
 
-function winningComboFound(board, player) {
+function gameHasEnded(board, player) {
   return (
     (board[0] == player && board[1] == player && board[2] == player) ||
     (board[3] == player && board[4] == player && board[5] == player) ||
@@ -76,82 +62,64 @@ function winningComboFound(board, player) {
   );
 }
 
-// ===== CHECK FOR WIN =====
+// ========== CHECK FOR WIN
 
-function checkForWin(symbol, who) {
-  if (winningComboFound(mainBoard, symbol)) {
-    if (who === `human`) {
-      humanScore++;
-      DOM.scoreboardPlayerValue.innerHTML = humanScore;
-      displayResultMessage(`PLAYER WINS!`);
-    } else if (who === `computer`) {
-      computerScore++;
-      DOM.scoreboardComputerValue.innerHTML = computerScore;
-      displayResultMessage(`COMPUTER WINS!`);
-    }
-
+function checkForWin(symbol) {
+  if (gameHasEnded(mainBoard, symbol)) {
     humanTurnReady = false;
-    setTimeout(() => {
-      resetGame();
-    }, 2000);
+    computerScore++;
+    DOM.computerScore.innerHTML = computerScore;
+    displayResultMessage(`COMPUTER WINS!`);
+    setTimeout(() => resetGame(), 2000);
     return true;
   }
 
-  if (emptySquares(mainBoard).length === 0) {
+  if (!emptySquares(mainBoard).length) {
     displayResultMessage(`IT'S A DRAW!`);
     humanTurnReady = false;
-    setTimeout(() => {
-      resetGame();
-    }, 2000);
+    setTimeout(() => resetGame(), 2000);
     return true;
   }
   return false;
 }
 
-// ===== MINIMAX =====
+// ========== MINIMAX
 
 function minimax(newBoard, player) {
-  let availSpots = emptySquares(newBoard);
+  const availSpots = emptySquares(newBoard);
 
-  // Ends recursion and returns score if game has reached conclusion
-  if (winningComboFound(newBoard, human)) {
-    return { score: -10 };
-  } else if (winningComboFound(newBoard, computer)) {
-    return { score: 10 };
-  } else if (availSpots.length === 0) {
-    return { score: 0 };
-  }
+  // if game has ended, return the appropriate score
+  if (gameHasEnded(newBoard, human)) return { score: -10 };
+  if (gameHasEnded(newBoard, computer)) return { score: 10 };
+  if (!availSpots.length) return { score: 0 };
 
-  // Collects scores
-  let moves = [];
+  const moves = [];
 
   for (let i = 0; i < availSpots.length; i++) {
-    // Will contain move info, later pushed to moves array
-    let move = {};
-    // Sets the index of move to the available spots index/square number
+    // will contain an index and score
+    const move = {};
+    // sets the index of move to the available spots index/square number
     move.index = newBoard[availSpots[i]];
-    // Sets the current square to the current turn taker's symbol
+    // sets the current square to the current turn taker's symbol
     newBoard[availSpots[i]] = player;
-    // If the current turn taker is the computer, run algo on other player
-    // Then pushes returned score to move object.
-    if (player === computer) {
-      let result = minimax(newBoard, human);
-      move.score = result.score;
-    } else {
-      let result = minimax(newBoard, computer);
-      move.score = result.score - 1; // remove '- 1' to de-optimise (deducts 1 for each level of depth)
-    }
-    // Sets move object index to square number.
+
+    // recursively explores the opponents next optimal move
+    // stores the resulting score
+    // de-optimize computer score by decrement (-1 for each level of depth/move)
+    // this ensures that the selected move that is the fastest path to winning
+    move.score =
+      player === computer
+        ? (move.score = minimax(newBoard, human).score)
+        : (move.score = minimax(newBoard, computer).score - 1);
+    // sets move object index to square number.
     newBoard[availSpots[i]] = move.index;
-    // Passes move object to moves array.
+    // passes move object to moves array.
     moves.push(move);
   }
 
-  // Identifies the best move
   let bestMove;
-  // Iterate through the array of moves and, if the current move is
-  // higher than the current high score, replace it.
-  // Update bestMove variable to the index of that new best move.
+
+  // if judging a computer move, find the highest scoring
   if (player === computer) {
     let bestScore = -10000;
     for (let i = 0; i < moves.length; i++) {
@@ -161,7 +129,7 @@ function minimax(newBoard, player) {
       }
     }
   } else {
-    // Same as as above, just looking for lowest score instead of highest.
+    // if judging a human move, find the lowest scoring
     let bestScore = 10000;
     for (let i = 0; i < moves.length; i++) {
       if (moves[i].score < bestScore) {
@@ -173,44 +141,38 @@ function minimax(newBoard, player) {
   return moves[bestMove];
 }
 
-// ===== COMPUTER TURN =====
+// ========== COMPUTER TURN
 
 function computerTurn() {
   const square = minimax(mainBoard, computer).index;
-
   setTimeout(() => {
     mainBoard[square] = computer;
-
-    DOM.squares[square].classList.remove(`game__square--empty`);
-    if (computer === `o`) {
-      DOM.squareIcons[square].classList.add(`fa-circle-o`, `game__icon--show`);
-    } else {
-      DOM.squareIcons[square].classList.add(`fa-times`, `game__icon--show`);
-    }
-
-    if (!checkForWin(computer, `computer`)) humanTurnReady = true;
+    visuallySelectSquare(square, computer);
+    if (!checkForWin(computer)) humanTurnReady = true;
   }, 750);
 }
 
-// ===== HUMAN TURN =====
+// ========== HUMAN TURN
 
 function humanTurn(square) {
-  if (mainBoard[square] !== square.toString() || !humanTurnReady) return;
-
-  mainBoard[square] = human;
+  if (mainBoard[square] !== square || !humanTurnReady) return;
   humanTurnReady = false;
-
-  DOM.squares[square].classList.remove(`game__square--empty`);
-  if (human === `o`) {
-    DOM.squareIcons[square].classList.add(`fa-circle-o`, `game__icon--show`);
-  } else {
-    DOM.squareIcons[square].classList.add(`fa-times`, `game__icon--show`);
-  }
-
-  if (!checkForWin(human, `human`)) computerTurn();
+  mainBoard[square] = human;
+  visuallySelectSquare(square, human);
+  if (!checkForWin(human)) computerTurn();
 }
 
-// ===== DISPLAY RESULT MESSAGE =====
+// ========== VISUALLY SELECT SQUARE
+
+function visuallySelectSquare(square, symbol) {
+  DOM.squares[square].classList.remove(`game__square--empty`);
+  DOM.squareIcons[square].classList.add(
+    symbol === `x` ? `fa-times` : `fa-circle-o`,
+    `game__icon--show`
+  );
+}
+
+// ========== DISPLAY RESULT MESSAGE
 
 function displayResultMessage(msg) {
   DOM.resultMessage.innerHTML = ``;
@@ -221,10 +183,12 @@ function displayResultMessage(msg) {
   `;
 }
 
-// ===== CLICK EVENTS =====
+// ========== CLICK EVENTS
 
 DOM.questionSymbolButtonO.addEventListener(`click`, () => questionSymbol(`o`));
 DOM.questionSymbolButtonX.addEventListener(`click`, () => questionSymbol(`x`));
-DOM.game.addEventListener(`click`, e => {
-  if (e.target.dataset.value) humanTurn(e.target.dataset.value);
-});
+
+DOM.game.addEventListener(
+  `click`,
+  e => e.target.dataset.value && humanTurn(e.target.dataset.value)
+);
