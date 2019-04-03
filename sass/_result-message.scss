@@ -1,0 +1,33 @@
+.result-message {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &__box {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($color-black, 0.75);
+    animation: fadeInOutOpacity 4s forwards;
+  }
+
+  &__text {
+    @include font-size-md;
+    text-align: center;
+    color: $color-white;
+
+    @include media(md) {
+      @include font-size-lg;
+    }
+
+    @include media(lg) {
+      @include font-size-xl;
+    }
+  }
+}

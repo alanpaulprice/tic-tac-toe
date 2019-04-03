@@ -1,0 +1,33 @@
+.scoreboard {
+  @include margin-b-sm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: $color-white;
+  text-transform: uppercase;
+  transition: all 0.5s 1s ease-out;
+
+  &--hidden {
+    transform: translateY(-50vh);
+  }
+
+  &__player,
+  &__computer {
+    width: 50%;
+  }
+
+  &__computer {
+    text-align: right;
+  }
+
+  &__player-label,
+  &__computer-label {
+    @include font-size-sm;
+  }
+
+  &__player-value,
+  &__computer-value {
+    @include font-size-lg;
+  }
+}

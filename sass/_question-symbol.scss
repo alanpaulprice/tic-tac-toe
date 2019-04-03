@@ -1,0 +1,44 @@
+.question-symbol {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: $color-white;
+  text-align: center;
+  transition: all 0.5s ease-out;
+
+  &--hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &__text {
+    width: 100%;
+    @include font-size-md;
+    @include margin-b-md;
+  }
+
+  &__button {
+    @include padding-h-sm;
+    @include margin-h-sm;
+    @include font-size-xxl;
+    background: none;
+    border: none;
+    outline: none;
+    transition: 0.5s all;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+      i {
+        color: $color-white;
+      }
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
