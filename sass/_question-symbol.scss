@@ -31,9 +31,11 @@
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.1);
-      i {
-        color: $color-white;
+      @include media(hov) {
+        transform: scale(1.1);
+        i {
+          color: $color-white;
+        }
       }
     }
 
