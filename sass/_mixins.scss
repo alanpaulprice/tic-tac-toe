@@ -68,4 +68,11 @@
       @content;
     }
   }
+
+  // hover
+  @if $breakpoint == hov {
+    @media screen and (hover: hover) {
+      @content;
+    }
+  }
 }
